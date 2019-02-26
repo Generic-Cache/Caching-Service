@@ -15,27 +15,34 @@ ENV VERSION=1 \
     CACHE_MEM_SIZE=512m \
     CACHE_MAX_AGE=30d \
     CACHE_DISK_SIZE=20480m \
-    UPSTREAM_DNS=10.9.0.100 \
+    UPSTREAM_DNS=8.8.8.8 \
     NUM_WORKER_PROCESSES=16
 
 
-# copying the config files form "Context" to "Wordir"
-COPY Nginx_related/
+# copying the config files form "Context" to "Workdir"
+COPY Nginx_related/ /
 
 # some important RUN commands -- to be updated after Nginx_related is completed
-# RUN 
-#     id -u ${WEBUSER} &> /dev/null || adduser --system --home /var/www/ --no-create-home --shell /bin/false --group --disabled-login ${WEBUSER} ;\
-#     mkdir -p 755 /data/cache ;\
-#     mkdir -p 755 /data/logs ;\
-#     chown -R ${WEBUSER}:${WEBUSER} /data/	;\
+RUN rm /etc/nginx/sites-enabled/*           ; \
+    chmod 754 /var/log/tallylog             ; \
+    chmod 755 /scripts/*			        ;\
+    id -u ${WEBUSER} &> /dev/null || adduser --system --home /var/www/ --no-create-home --shell /bin/false --group --disabled-login ${WEBUSER} ;\
+    mkdir -m 755 -p /data/cache             ;\
+    mkdir -m 755 -p /data/logs              ;\
+    mkdir -m 755 -p /tmp/nginx/		        ;\
+    mkdir -p /etc/nginx/sites-enabled	    ;\
+    chown -R ${WEBUSER}:${WEBUSER} /data/	;\
+    ln -s /etc/nginx/sites-available/default.conf /etc/nginx/sites-enabled/default
 
 # Defining Volumes to be mounted
-VOLUME [ "/data/cache", "/data/logs" ]
+VOLUME [ "/data/cache", "/data/logs", "/var/www" ]
 
 # Expose port 80 of the container
 EXPOSE 80
 
 # Set an entry-point Workdir
-# WORKDIR /root
+WORKDIR /scripts
 
+# Setting a command to execute on start-up
+CMD [ "./entrypoint.sh" ]
 
