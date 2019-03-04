@@ -13,7 +13,7 @@ Cache Server
     - replace ENV variables with their actual values                 --- DONE
     - display the state of cache dynamically                         --- DONE
 * Push the Generic_cache to doker hub (private)                      --- DONE
-* Make changes to the "proxy_cache_key" for better hashing           --- DONE
+* Make changes to the "proxy_cache_key" for better hashing           --- Much appreciated
 
 
 
