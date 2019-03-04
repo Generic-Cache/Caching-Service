@@ -1,0 +1,39 @@
+=====================================
+Cache Server
+=====================================
+
+* Make a base ubuntu image with NGINX and other essential softwares  --- DONE
+* Push the Ubuntu-nginx image to docker hub                          --- DONE
+* Make the Generic_cache image (here NGINX should run in foreground) --- DONE
+* Write a script to check
+    - nginx config                                                   --- DONE
+    - permissions                                                    --- DONE
+* Write a script to 
+    - act as entrypoint upon launching                               --- DONE   
+    - replace ENV variables with their actual values                 --- DONE
+    - display the state of cache dynamically                         --- DONE
+* Push the Generic_cache to doker hub (private)                      --- DONE
+* Make changes to the "proxy_cache_key" for better hashing           --- DONE
+
+
+
+======================================
+DNS Server
+======================================
+
+* Make the DNS docker image with
+    - Ubuntu base image
+    - DJBdns installed
+
+* Make a script for dynamic addition of DNS entries
+* Push the docker image to the docker hub
+
+
+======================================
+SNI Proxy
+======================================
+
+* Make a SNI_proxy image with
+    - Ubuntu base image
+    - https://github.com/dlundquist/sniproxy as the SNI proxy daemon
+
