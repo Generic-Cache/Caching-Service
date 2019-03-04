@@ -107,7 +107,7 @@ This shows dynamically cache MISS or HIT or BYPASS etc. with colour coded output
       hlpr98/generic_cache:latest;
     ```
 
-  * Opening an iteractive bash on the container.
+ * Opening an iteractive bash on the container.
   
     ```shell
     $ docker exec -it test bash
