@@ -19,10 +19,10 @@ ENV VERSION=1 \
     NUM_WORKER_PROCESSES=16
 
 
-# copying the config files form "Context" to "Workdir"
+# copying the config files from "Context" to "Workdir"
 COPY Nginx_related/ /
 
-# some important RUN commands -- to be updated after Nginx_related is completed
+# some important RUN commands
 RUN rm /etc/nginx/sites-enabled/*           ; \
     chmod 754 /var/log/tallylog             ; \
     chmod 755 /scripts/*			        ;\
