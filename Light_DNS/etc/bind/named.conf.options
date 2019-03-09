@@ -1,0 +1,44 @@
+acl goodclients {
+    10.0.0.0/8;         // LOCAL_IP_RANGE
+    172.17.0.0/16;       // Docker IP Pool
+    localhost;          // 127.0.0.1
+    localnets;          // 198.168.2.0/24
+};
+
+options {
+        directory "/var/cache/bind";
+
+        auth-nxdomain no;    # conform to RFC1035
+
+        // Use built in keys to manage validation and authentication
+        dnssec-validation auto;
+        
+        // turn off IPv6
+        listen-on-v6 { none; };
+
+        // Listen on any interface of server and allow only "goodclients" to query
+        listen-on port 53 { any; };
+        allow-query { goodclients; };
+
+        // Allow query cache to "goodclients", because recursive request is on for them
+        allow-query-cache { goodclients; };
+
+
+        // Forwarding DNS servers 
+        forwarders { 
+                    10.9.0.10;
+                    10.9.0.100;
+                    10.20.1.21;   
+        };
+        forward only;
+
+        // Allow recursivev requests only to LAN clients
+        recursion yes;
+        allow-recursion { goodclients; };
+
+        // Request policy zone to be used
+        response-policy { zone "rpz"; };
+
+        // If records have similar names, return them in cyclic order
+        rrset-order { order cyclic; };
+};

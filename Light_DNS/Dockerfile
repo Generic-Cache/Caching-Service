@@ -6,14 +6,11 @@ MAINTAINER hlpr98/generic_cache
 # Setting environment variables
 #
 ENV VERSION=1 \
-    DNS_DOMAINS_DIR="/dns_domains"
-
-# copying the scripts from "Context" to "Workdir"
-COPY scripts /scripts
+    DNS_DOMAINS_DIR="/dns_domains" \
+    INTERNAL_LAN_IP_GROUP="10.0.0.0/24"
 
 # some important RUN commands
-RUN chmod 755 /scripts/*			        ;\
-    apt-get update                          ;\
+RUN apt-get update                          ;\
     apt-get -y install apt-utils            ;\
     apt-get -y install net-tools            ;\
     apt-get -y install iputils-ping         ;\
@@ -26,6 +23,21 @@ RUN apt-get -y install bind9                ;\
     apt-get -y install bind9utils           ;\
     apt-get -y install bind9-doc            ;
 
+# Setting up environment suitable for further tasks
+RUN rm -f /etc/bind/named.conf              ;\
+    rm -f /etc/bind/named.conf.options      ;\
+    rm -f /etc/bind/named.conf.local        ;\
+    mkdir -m 775 -p /var/log/bind           ;
+
+# copying the scripts from "Context" to "Workdir"
+COPY scripts /scripts
+
+# copying ./etc/ to /etc/ of the container
+COPY etc/ /etc
+
+
+RUN mkdir -m 755 -p /dns_domains            ;\
+    chmod 755 /scripts/*			        ;
 
 # Defining Volumes to be mounted
 VOLUME [ "/dns_domains" ]
@@ -37,5 +49,5 @@ EXPOSE 53
 WORKDIR /scripts
 
 # Setting a command to execute on start-up
-CMD [ "bash" ]
+CMD [ "./entrypoint.sh" ]
 
