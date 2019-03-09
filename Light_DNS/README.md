@@ -1,10 +1,7 @@
 # Introduction
 
-Caching-Service is a docker based generic cache, which uses NGINX as the underlying server. This can be used to reduce latency in the internal LAN and avoid repeatative usage of the external access link. This can also be used to mimic a mirror server by using an authoritative server.
+This is a docker container based authoritative DNS server for your LAN cache. This is built using BIND-9. This is meant to be used in conjunction with hlpr98/generic_cache and hlpr98/sni_proxy.
 
-# Usage
-
-The Cache-Service can handle only HTTP requests. Thus only the HTTP requests must be directed to it, which can done using DNS and SNI Proxy (to handle HTTPS).
 
 ## Prerequisites
 
