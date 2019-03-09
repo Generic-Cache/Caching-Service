@@ -41,7 +41,7 @@ do
             # check what are the domains added and sync the /tinydns/data
             while read line
             do 
-                if [ "$(grep -c "$line" $TINYDNS_ROOT/data)" -eq 0]
+                if [ "$(grep -c "$line" $TINYDNS_ROOT/data)" -eq 0 ]
                 then 
                     $TINYDNS_ROOT/add-host $line $CACHE_IP
                 fi
