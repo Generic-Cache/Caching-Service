@@ -1,0 +1,15 @@
+zone "cache.genericcache.com" {
+    type master;
+    file "/etc/bind/generic_cache.db";
+};
+
+zone "rpz" {
+    type master;
+    file "/etc/bind/rpz.db";
+
+    // nobody should directly query this zone
+    allow-query { none; };
+    
+    // Allow no transfer of zone files as there is no SLAVE present
+    allow-transfer { none; };
+};
