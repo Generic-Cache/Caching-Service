@@ -12,9 +12,6 @@ GENERIC_ZONE="cache.genericcache.com."
 GENERIC_EMAIL="dns.genericcache.com."
 
 
-# change this to some static record like "0-0-0 0:0:0"
-# previous_date_reference=$(date -r . "+%Y-%m-%d %H:%M:%S")
-
 # Getting the PREVIOUS_DATE_REFERENCE
 previous_date_reference=$(grep -oP "(?<=PREVIOUS_DATE_REFERENCE=).*" /etc/environment)
 previous_date_reference=$(eval printf %s $previous_date_reference);

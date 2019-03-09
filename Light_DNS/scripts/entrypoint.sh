@@ -21,8 +21,6 @@ echo "\$TTL 12H
                             1H )    ; <minimum-TTL>
 ;
             IN      NS      localhost. 
-;## testing
-www.123testing123.com IN CNAME testing.cache.genericcache.com.
 
 " > ${RPZ_DB}
 
@@ -37,9 +35,6 @@ echo "\$ORIGIN ${GENERIC_ZONE}
                             900 )        ; <minimum-TTL>
 ;
 @           IN      NS      localhost.
-
-;
-testing IN A 10.9.4.22
 
 " > ${GENERIC_CACHE_DB}
 

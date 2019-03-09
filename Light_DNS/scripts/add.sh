@@ -2,9 +2,6 @@
 
 # set -e;
 
-# DEBUGGING and TESTING
-# DNS_DOMAINS_DIR="./dns_record"
-
 echo -n "Enter the DNS domain you would like to change (must not have spaces) : "
 read DOMAIN
 
@@ -35,10 +32,6 @@ then
     # setting environment variable
     echo "${DOMAIN}=${DOMAIN_IP}" >> /etc/environment
     source /etc/environment    
-
-    # DEBUGGING and TESTING
-    # echo "export ${DOMAIN}=${DOMAIN_IP}" >> /home/praveen/.bashrc
-    # source /home/praveen/.bashrc
 
     echo "The ENV ${DOMAIN}=${DOMAIN_IP} has been created\n"
 
