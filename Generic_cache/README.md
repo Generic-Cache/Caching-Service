@@ -86,12 +86,20 @@ The Cache-Service can handle only HTTP requests. Thus only the HTTP requests mus
     $ docker exec -it <container name> bash
     ```
     
- * Execting the ```scripts/display.sh``` script to show the live status of the cache with colour coded output.
+ * Executing the ```scripts/display.sh``` script to show the live status of the cache with colour coded output.
  
     ```shell
     $ ./display.sh
     ```
-This shows dynamically cache MISS or HIT or BYPASS etc. with colour coded outputs of the logs corresponding to that perticular request. Upon terminating its execution (Ctrl + C), it displays the MISS ration, HIT ration etc.
+   This shows dynamically cache MISS or HIT or BYPASS etc. with colour coded outputs of the logs corresponding to that particular request. Upon terminating 
+    its execution (Ctrl + C), it displays the MISS ration, HIT ration etc.
+
+ * Executing the ```scripts/stats.sh``` script to show the complete status of the server from its Day 1 of deployment. This may take a while.:)
+ 
+    ```shell
+    $ ./stats.sh
+    ```
+    This shows total number of requests made to the server, number of cache MISS or HIT or BYPASS etc. 
 
 ## Testing and Monitoring
 
