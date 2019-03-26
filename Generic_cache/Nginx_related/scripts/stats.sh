@@ -59,7 +59,7 @@ function _upon_termination {
 
                 # printf "\n\n${BOLD}${RED} Miss ratio = "; 
                 echo -ne "\n\n${BOLD}${RED} No. of Misses = " $(echo "${miss}");
-                echo -ne "\n\n${BOLD}${RED} Miss ratio = " $(echo "scale=3; ${miss} * 100 / ${total}" | bc);
+                echo -ne "\n${BOLD}${RED} Miss ratio = " $(echo "scale=3; ${miss} * 100 / ${total}" | bc);
 
                 # printf "\n${BOLD}${GREEN} Hit ratio = ";
                 echo -ne "\n\n${BOLD}${GREEN} No. of Hits = " $(echo "${hit}");
@@ -143,7 +143,7 @@ do
         fi
 
 
-     echo $temp
+     echo $total. $temp
 done < /data/logs/access.log
 
 _upon_termination
