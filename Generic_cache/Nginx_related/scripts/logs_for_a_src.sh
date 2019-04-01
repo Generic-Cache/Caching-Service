@@ -48,11 +48,10 @@ total=0;
 function _upon_termination {
 
         clear
-        echo -e "${NORMAL}${YELLOW}=========================================================" >> $IP.log
-        echo -e "${BOLD}${YELLOW}The Final Statictics" >> $IP.log
-        echo -e "${NORMAL}${YELLOW}=========================================================" >> $IP.log
+        echo -e "\n\n${NORMAL}${YELLOW}=========================================================" >> $IP.log;
+        echo -e "${BOLD}${YELLOW}The Final Statictics" >> $IP.log;
+        echo -e "${NORMAL}${YELLOW}=========================================================" >> $IP.log;
 
-                                                                                                                                                                                          37,9          Top
         if [[ "$total" -ne 0 ]]
         then
                 echo -ne "\n\n${BOLD}${NC} Total no. of requests = " $(echo "${total}") >> $IP.log;
@@ -155,7 +154,8 @@ do
                     #echo -e ${BLUE}${temp2};
             fi
 
-            echo $temp2 >> $IP.log
+            echo $total. $temp2 >> $IP.log;
+            echo -n "\n";
         fi
 
     echo $total. $temp

@@ -16,7 +16,8 @@ ENV VERSION=1 \
     CACHE_MAX_AGE=30d \
     CACHE_DISK_SIZE=20480m \
     UPSTREAM_DNS=8.8.8.8 \
-    NUM_WORKER_PROCESSES=16
+    NUM_WORKER_PROCESSES=16 \
+    ALLOWED_HOSTS=.*
 
 
 # copying the config files from "Context" to "Workdir"
