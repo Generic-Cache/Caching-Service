@@ -76,8 +76,32 @@ The Cache-Service can handle only HTTP requests. Thus only the HTTP requests mus
       -v /home/cache/<container name>/logs:/data/logs \
       -p <Your IP>:80:80 \
       hlpr98/generic_cache:latest;
+    ```  
+ * The Generic_cache also has the capability of allowing only requests for only perticular `HOST_NAMES` (for ex: `*.example.com`). By default it is set to allow every non-void hosts. To enable this,
+   
+   ```shell
+   $ docker run -td \
+      --restart unless-stopped \
+      --name <container name> \
+      -v /home/cache/<container name>/data:/data/cache \
+      -v /home/cache/<container name>/logs:/data/logs \
+      -e ALLOWED_HOSTS="~(<RegExp for your HOST_NAMES>)" \
+      -p <Your IP>:80:80 \
+      hlpr98/generic_cache:latest;
     ```
-    
+ * The Generic_cache also can be set to use your local cache as the `UPSTREAM_RESOLVER`. Its by default `8.8.8.8`.
+   
+   ```shell
+   $ docker run -td \
+      --restart unless-stopped \
+      --name <container name> \
+      -v /home/cache/<container name>/data:/data/cache \
+      -v /home/cache/<container name>/logs:/data/logs \
+      -e UPSTREAM_DNS="<Your local cache IP>" \
+      -p <Your IP>:80:80 \
+      hlpr98/generic_cache:latest;
+    ```
+
 ## Monitoring
 
  * Opening an iteractive bash on the container.

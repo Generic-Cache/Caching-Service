@@ -10,6 +10,7 @@ MAINTAINER hlpr98/generic_cache
 #      max-age-of-cache = 30 days
 #      used upstream DNS = 8.8.8.8. Can be changed to 8.8.8.8.4.4 or Private DNS server.
 #      num-of-nginx-worker-processes used = 16 (this the standard value, may be increased if sufficient resources are available)
+#      allowed-host = any. Can be changed to perticular HOSTS using RegExp.
 ENV VERSION=1 \
     WEBUSER=www-data \
     CACHE_MEM_SIZE=512m \
@@ -17,7 +18,7 @@ ENV VERSION=1 \
     CACHE_DISK_SIZE=20480m \
     UPSTREAM_DNS=8.8.8.8 \
     NUM_WORKER_PROCESSES=16 \
-    ALLOWED_HOSTS=.*
+    ALLOWED_HOSTS="~(.+)"
 
 
 # copying the config files from "Context" to "Workdir"
