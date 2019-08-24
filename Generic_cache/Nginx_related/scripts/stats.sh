@@ -77,13 +77,13 @@ trap _upon_termination SIGINT SIGTERM SIGKILL
 
 #necessary variables
 
-miss="$(grep -c "ucs=\"MISS\"" access.log)";
-hit="$(grep -c "ucs=\"HIT\"" access.log)";
-stale="$(grep -c "ucs=\"STALE\"" access.log)";
-bypass="$(grep -c "ucs=\"BYPASS\"" access.log)";
-expired="$(grep -c "ucs=\"EXPIRED\"" access.log)";
-updating="$(grep -c "ucs=\"UPDATING\"" access.log)";
-revalidated="$(grep -c "ucs=\"REVALIDATED\"" access.log)";
-total="$(grep -c "rid=" access.log)";
+miss="$(grep -c "ucs=\"MISS\"" /data/logs/access.log)";
+hit="$(grep -c "ucs=\"HIT\"" /data/logs/access.log)";
+stale="$(grep -c "ucs=\"STALE\"" /data/logs/access.log)";
+bypass="$(grep -c "ucs=\"BYPASS\"" /data/logs/access.log)";
+expired="$(grep -c "ucs=\"EXPIRED\"" /data/logs/access.log)";
+updating="$(grep -c "ucs=\"UPDATING\"" /data/logs/access.log)";
+revalidated="$(grep -c "ucs=\"REVALIDATED\"" /data/logs/access.log)";
+total="$(grep -c "rid=" /data/logs/access.log)";
 
 _upon_termination
